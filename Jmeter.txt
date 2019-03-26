@@ -1,0 +1,96 @@
+Simple data writer and summary report listener and give a path for the csv to get stored 
+
+jmeter -g D:\Report\TC001_Result.csv -o C:Report\ReportD
+
+	  (Path of where result is stored) (Path where u want the report to get generated)
+
+
+
+1.Add 'Summary Report', 'Simple Data Writer' from Listeners.
+2.Set location to generated csv
+3.open reportgenerator.properties from "D:\apache-jmeter-3.0\bin\" copy all content from it
+4.Open user.properties from same bin folder
+5.Append all from reportgenerator.properties to user.properties and save
+6.Now run the your Test script
+7.open cmd and enter
+jmeter -g D:\Report\TC001_Result.csv -o C:Report\ReportD
+
+Go to C:Report\ReportD and open index.html and you can check your test result
+
+"tenantId":"(.+?)"
+"userId":"(.+?)"
+
+330-login and 401 -logout   10 and 30 users
+
+userId":"8648e83e-d5a5-4db8-afc5-9c5ec3cae8df","tenantId":"efcfceef-9a9a-421c-a9c4-6eabb041e46a"
+
+
+
+Batch API is getting failed as Jmeter is not able to handle it
+
+
+GetToken API is getting called multiple times
+Batch API is getting called again and again if response is not received in one call
+Extra IP address is getting attached to the request id
+
+
+
+get scope
+
+"companyCode":"(.+?)"
+"businessUnitCode":"(.+?)"
+"locationCode":"(.+?)"
+"costCenterCode":"(.+?)"
+"designation":"(.+?)"
+"department":"(.+?)"
+727d5421-193c-4f05-8048-e407ee7e1e89
+
+cost center allowed list.
+================================================================================================================
+ for Perf Mon graphs
+
+sudo su - dewdrops
+ssh 10.90.4.37 (BFF)
+
+cd ../../..
+
+cd dewdrops/ServerAgent-2.2.3/ServerAgent-2.2.3/
+
+./startAgent.sh
+
+
+same for UI server also
+ssh 10.90.4.178
+
+====================================================================================================================
+
+download ojdbc and keep it in lib folder for database connection
+
+
+=====================================================================================================================
+
+We can increase the users count and check  the performance. But that won't be accurate in real time as in real time different users will hit the URL with different IP. But if we simply increase the thread count here then cache will get involved and we won't get accurate result
+
+we can add Cache Manager and select to clear cache at each iteration
+
+===========================================================================================================================
+Distributed Testing 
+
+Run create-rmi-keystore and give details ,first answer should be rmi, rmi_keystore.jks should get generated on both systems
+
+on slave system run jmeter_server.bat
+
+On master system jmeter.properties file add IP of slave in remote_hosts
+
+-----------------------------------------------------------------------------
+with this to be started if ip in jmeter-server is not same as machine ip
+Jmeter Master:
+
+./jmeter-server -Djava.rmi.server.hostname=10.30.30.147
+
+Jmeter Slave:
+
+./jmeter -Djava.rmi.server.hostname=10.30.30.147
+=====================================================================================================================
+
+jmeter -h for help and jmeter -? for all commands
