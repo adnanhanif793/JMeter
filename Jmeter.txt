@@ -97,6 +97,8 @@ jmeter -h for help and jmeter -? for all commands
 
 
 =========================================================
+Execution order of elements in Jmeter
+
 Configuration elements
 Pre-Processors
 Timers
@@ -104,3 +106,31 @@ Sampler
 Post-Processors
 Assertions
 Listeners
+
+
+============================================
+
+Passing Cookies between Thread Groups
+ 
+
+Assuming the HTTP Cookie Manager is enabled, the following code can convert JMeter cookies into JMeter properties.
+
+ 
+
+import org.apache.jmeter.protocol.http.control.CookieManager;
+ 
+CookieManager manager =
+
+ctx.getCurrentSampler().getProperty("HTTPSampler.cookie_manager").getObjectValue();
+
+ 
+
+props.put("cookiecount",String.valueOf(manager.getCookieCount()));
+
+ 
+
+for (int i=0;i<manager.getCookieCount();i++){
+                 // code to convert Cookie information to JMeter Properties
+    props.put("cookie_name_" + i, manager.get(i).getName());
+    …..
+}
